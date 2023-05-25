@@ -37,6 +37,10 @@ const addResultItem = result => {
   thumbnailImage.src = thumbnail;
   thumbnailImage.alt = `Video Thumbnail of ${title}`;
   thumbnailContainer.appendChild(thumbnailImage);
+  const durationContainer = document.createElement('div');
+  durationContainer.classList.add('duration');
+  durationContainer.innerText = duration;
+  thumbnailContainer.appendChild(durationContainer);
 
   const titleContainer = document.createElement('div');
   titleContainer.classList.add('title');
@@ -62,7 +66,7 @@ const addResultItem = result => {
   sourceContainer.appendChild(sourceAnchor);
   const viewsContainer = document.createElement('div');
   viewsContainer.classList.add('views');
-  viewsContainer.innerText = viewCount;
+  viewsContainer.innerText = `${viewCount} views`;
   otherDetailsContainer.appendChild(sourceContainer);
   otherDetailsContainer.appendChild(viewsContainer);
 
