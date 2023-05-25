@@ -3,14 +3,16 @@ const myInitCallback = function() {
     google.search.cse.element.render(
         {
           div: "search-results",
-          tag: 'searchresults-only'
+          tag: 'searchresults-only',
+          gname: 'video-search'
          });
   } else {
     google.setOnLoadCallback(function() {
         google.search.cse.element.render(
             {
               div: "search-results",
-              tag: 'searchresults-only'
+              tag: 'searchresults-only',
+              gname: 'video-search'
             });
     }, true);
   }
@@ -44,6 +46,7 @@ const addResultItem = result => {
   titleContainer.appendChild(titleAnchor);
 
   const channelContainer = document.createElement('div');
+  channelContainer.classList.add('channel');
   const channelAnchor = document.createElement('a');
   channelAnchor.href = channelUrl;
   channelAnchor.innerText = channelName;
@@ -58,7 +61,7 @@ const addResultItem = result => {
   sourceAnchor.innerText = sourceWebsite;
   sourceContainer.appendChild(sourceAnchor);
   const viewsContainer = document.createElement('div');
-  viewsContainer.classList.add('views')
+  viewsContainer.classList.add('views');
   viewsContainer.innerText = viewCount;
   otherDetailsContainer.appendChild(sourceContainer);
   otherDetailsContainer.appendChild(viewsContainer);
@@ -75,7 +78,7 @@ const customizeResults = (name, q, promos, results, resultsDiv) => {
   for (let result of results) {
     // Display only video results
     if (result['richSnippet']['videoobject'] !== undefined && result['richSnippet']['videoobject']['genre'] === 'Music') {
-      console.log(result);  
+      console.log(result);  // TEMP
       resultsDiv.appendChild(addResultItem(result));
     }
   }
@@ -92,4 +95,3 @@ window.__gcse = {
     },
   }
 };
-
